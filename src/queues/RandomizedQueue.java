@@ -1,3 +1,5 @@
+package queues;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -42,6 +44,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		Node curNode = firstNode;
 		if (size == 1) {
 			firstNode = lastNode = null;
+			size = 0;
 			return curNode.item;
 		}
 		int randIndex = StdRandom.uniform(size);
@@ -53,7 +56,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 		if (nextNode == null) { 				// first element
 			firstNode = curNode.prevNode;
 		} else if (curNode.prevNode == null) { 	// last element
-			lastNode = nextNode;
+			nextNode.prevNode 	= null;
+			lastNode 			= nextNode;
 		} else {								// middle element
 			nextNode.prevNode = curNode.prevNode;
 		}
@@ -124,6 +128,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 				System.out.println(itr.next());
 			}
 			System.out.println("delete:" + queue.dequeue());	
+			System.out.println("size: " + queue.size);
 		}
 		
 	}
