@@ -6,11 +6,6 @@ public class Deque<Item> implements Iterable<Item> {
 	private Node 	lastNode;
 	private int 	size;
 	
-	@Override
-	public String toString() {
-		return "Deque [firstNode=" + firstNode + ", lastNode=" + lastNode + ", size=" + size + ", iterator()="
-				+ iterator() + "]";
-	}
 	// construct an empty deque
 	public Deque() {
 		firstNode 	= null;
